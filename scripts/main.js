@@ -1,3 +1,20 @@
+    // Tooltip for project card images
+    document.querySelectorAll('.project-img').forEach(function(imgDiv) {
+        const tooltip = imgDiv.querySelector('.project-img-tooltip');
+        if (!tooltip) return;
+        let hideTimeout = null;
+        imgDiv.addEventListener('mouseenter', function() {
+            imgDiv.classList.add('show-tooltip');
+            if (hideTimeout) clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(function() {
+                imgDiv.classList.remove('show-tooltip');
+            }, 4000);
+        });
+        imgDiv.addEventListener('mouseleave', function() {
+            imgDiv.classList.remove('show-tooltip');
+            if (hideTimeout) clearTimeout(hideTimeout);
+        });
+    });
 document.addEventListener('DOMContentLoaded', function() {
     // Theme setup: from storage or default to light
     const root = document.documentElement;
@@ -96,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof Swiper !== 'undefined' && document.querySelector('.projects-slider')) {
         // eslint-disable-next-line no-undef
         new Swiper('.projects-slider', {
-            slidesPerView: 3,
+            slidesPerView: "auto",
             spaceBetween: 120,
             loop: true,
             centeredSlides: false,
