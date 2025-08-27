@@ -158,7 +158,6 @@
     --secondary-text: #a9b4c0;
     --accent: #8fb3ff;
     --section-alt-bg: #0d1524;
-    --section-gradient: linear-gradient(180deg, rgba(16,24,38,0) 0%, rgba(16,24,38,0.5) 100%);
     --section-border: rgba(255,255,255,0.03);
 }
 
@@ -338,7 +337,6 @@ section::before {
     left: 0;
     right: 0;
     height: 100%;
-    background: var(--section-gradient);
     pointer-events: none;
 }
 
@@ -359,7 +357,6 @@ section::after {
     bottom: 0;
     left: 0;
     width: 1px;
-    background: var(--section-gradient);
     transform: rotate(180deg);
 }
 
