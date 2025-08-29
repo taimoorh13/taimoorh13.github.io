@@ -1,4 +1,4 @@
-    // Tooltip for project card images
+// Tooltip for project card images
     document.querySelectorAll('.project-img').forEach(function(imgDiv) {
         const tooltip = imgDiv.querySelector('.project-img-tooltip');
         if (!tooltip) return;
@@ -151,5 +151,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+    }
+
+    // Initialize Leaflet map for My Journey section
+    if (document.getElementById('journey-map')) {
+        var map = L.map('journey-map', {
+            center: [20, 10], // Centered globally, adjust as needed
+            zoom: 2,
+            zoomControl: false,
+            attributionControl: false
+        });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+        }).addTo(map);
     }
 });
