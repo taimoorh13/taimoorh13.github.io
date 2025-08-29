@@ -1153,6 +1153,19 @@ section:nth-child(4) { animation-delay: 0.4s; }
   margin-bottom: 0;
 }
 
+/* Dark mode for proud-project-card */
+.theme-dark .proud-project-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+.theme-dark .proud-project-card h3 {
+    color: #b7aaff;
+}
+.theme-dark .proud-project-card p {
+    color: #e3e6f3;
+}
+
 /* Dark theme component overrides */
 .theme-dark .navbar { border-bottom: 1px solid rgba(255,255,255,0.08); }
 .theme-dark .navbar.shrink{ box-shadow: 0 8px 26px rgba(0,0,0,0.5); }
@@ -1188,40 +1201,86 @@ section:nth-child(4) { animation-delay: 0.4s; }
 .theme-dark .timeline-marker i{ color: #8fb3ff; background: var(--secondary-bg); box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
 
 /* --- Beyond Work Section --- */
-.beyond-work-content {
-  max-width: 700px;
-  margin: 0 auto 2.5rem auto;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(60,80,140,0.10);
-  padding: 2.2em 2em 2em 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1.5px solid #ece9f7;
+/* Beyond Work Card Style */
+.beyond-work-section {
+    display: flex;
+    justify-content: center;
+    margin: 2.5em 0;
 }
-.beyond-work-main {
-  font-size: 1.13em;
-  font-weight: 600;
-  color: #6a45ff;
-  margin-bottom: 1.1em;
-  text-align: center;
+.beyond-work-card {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 4px 24px rgba(80, 80, 180, 0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+    padding: 2.2em 2.5em 2em 2.5em;
+    max-width: 540px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
 }
-.beyond-work-secondary {
-  font-size: 1.05em;
-  color: #222831;
-  text-align: center;
+
+/* Dark mode for beyond-work-card */
+.theme-dark .beyond-work-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
-.beyond-work-activity {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  font-size: 1.08em;
-  color: #222831;
-  margin-bottom: 0.4em;
+.theme-dark .beyond-work-title {
+    color: #b7aaff;
 }
-.beyond-work-activity i {
-  color: #6a45ff;
-  font-size: 1.15em;
-  vertical-align: middle;
+.theme-dark .beyond-work-intro {
+    color: #e3e6f3;
+}
+.theme-dark .beyond-work-pill {
+    background: rgba(255,255,255,0.06);
+    color: #e3e6f3;
+}
+.theme-dark .beyond-work-pill i {
+    color: #b7aaff;
+}
+}
+.beyond-work-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.7em;
+}
+.beyond-work-icon {
+    font-size: 2em;
+    color: #7b61ff;
+    margin-right: 0.7em;
+}
+.beyond-work-title {
+    font-size: 1.35em;
+    font-weight: 600;
+    color: #23235b;
+}
+.beyond-work-intro {
+    font-size: 1.18em;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 1.2em;
+}
+.beyond-work-pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7em 0.8em;
+}
+.beyond-work-pill {
+    display: flex;
+    align-items: center;
+    background: #f3f4f8;
+    color: #3a3a5a;
+    border-radius: 18px;
+    padding: 0.48em 1.25em;
+    font-size: 1.05em;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(123, 97, 255, 0.07);
+    transition: background 0.2s, color 0.2s;
+    margin-bottom: 0.1em;
+}
+.beyond-work-pill i {
+    margin-right: 0.6em;
+    font-size: 1.1em;
+    color: #7b61ff;
 }
