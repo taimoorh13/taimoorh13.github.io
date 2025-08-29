@@ -1186,3 +1186,42 @@ section:nth-child(4) { animation-delay: 0.4s; }
 /* Timeline marker surfaces */
 .theme-dark .timeline-marker .dot{ background: var(--secondary-bg); box-shadow: 0 0 0 6px rgba(143,179,255,0.18); border-color: #8fb3ff; }
 .theme-dark .timeline-marker i{ color: #8fb3ff; background: var(--secondary-bg); box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+
+/* --- Beyond Work Section --- */
+.beyond-work-content {
+  max-width: 700px;
+  margin: 0 auto 2.5rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(60,80,140,0.10);
+  padding: 2.2em 2em 2em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid #ece9f7;
+}
+.beyond-work-main {
+  font-size: 1.13em;
+  font-weight: 600;
+  color: #6a45ff;
+  margin-bottom: 1.1em;
+  text-align: center;
+}
+.beyond-work-secondary {
+  font-size: 1.05em;
+  color: #222831;
+  text-align: center;
+}
+.beyond-work-activity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 1.08em;
+  color: #222831;
+  margin-bottom: 0.4em;
+}
+.beyond-work-activity i {
+  color: #6a45ff;
+  font-size: 1.15em;
+  vertical-align: middle;
+}
