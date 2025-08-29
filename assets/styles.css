@@ -1114,6 +1114,45 @@ section:nth-child(4) { animation-delay: 0.4s; }
     .timeline-marker{ left: 8px; }
 }
 
+/* --- Proud Projects Section --- */
+.proud-projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.2rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.proud-project-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(60,80,140,0.10);
+  padding: 2.2em 1.7em 2em 1.7em;
+  min-width: 260px;
+  max-width: 340px;
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1.5px solid #ece9f7;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.proud-project-card:hover {
+  box-shadow: 0 16px 40px rgba(106,69,255,0.18);
+  transform: translateY(-6px) scale(1.03);
+}
+.proud-project-card h3 {
+  font-size: 1.18em;
+  font-weight: 700;
+  color: #6a45ff;
+  margin-bottom: 0.7em;
+}
+.proud-project-card p {
+  font-size: 1em;
+  color: #222831;
+  margin-bottom: 0;
+}
+
 /* Dark theme component overrides */
 .theme-dark .navbar { border-bottom: 1px solid rgba(255,255,255,0.08); }
 .theme-dark .navbar.shrink{ box-shadow: 0 8px 26px rgba(0,0,0,0.5); }
