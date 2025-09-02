@@ -1,3 +1,154 @@
+/* Fix for about-text card in My Journey section with inline styles */
+.about-text-journey {
+    background: #fff !important;
+    color: #23235b;
+    transition: background 0.2s, color 0.2s;
+}
+.theme-dark .about-text-journey {
+    background: linear-gradient(180deg, rgba(24,31,46,0.98), rgba(24,31,46,0.92)) !important;
+    color: #e6edf3 !important;
+}
+/* About text card dark mode fix */
+.about-text {
+    background: #fff;
+    color: #23235b;
+    transition: background 0.2s, color 0.2s;
+}
+.theme-dark .about-text {
+    background: linear-gradient(180deg, rgba(24,31,46,0.98), rgba(24,31,46,0.92));
+    color: #e6edf3;
+}
+/* Dark mode for Leaflet zoom and custom control buttons */
+.theme-dark .leaflet-control-zoom,
+.theme-dark .leaflet-bar,
+.theme-dark .leaflet-control-custom,
+.theme-dark .map-ctrl-btn {
+    background: #23235b !important;
+    color: #e6edf3 !important;
+    border-color: #181f2e !important;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+}
+.theme-dark .leaflet-bar a,
+.theme-dark .leaflet-bar a:hover,
+.theme-dark .leaflet-bar a:focus {
+    background: #23235b !important;
+    color: #e6edf3 !important;
+    border-color: #181f2e !important;
+}
+.theme-dark .leaflet-bar a {
+    box-shadow: none !important;
+}
+.theme-dark .leaflet-bar a i,
+.theme-dark .leaflet-control-custom i {
+    color: #b7aaff !important;
+}
+/* Dark mode for Leaflet layer control */
+.theme-dark .leaflet-control-layers {
+    background: #181f2e !important;
+    color: #e6edf3 !important;
+    border-color: #23235b !important;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+}
+.theme-dark .leaflet-control-layers-list,
+.theme-dark .leaflet-control-layers-expanded {
+    background: #181f2e !important;
+    color: #e6edf3 !important;
+}
+.theme-dark .leaflet-control-layers label {
+    color: #e6edf3 !important;
+}
+.theme-dark .leaflet-control-layers-separator {
+    border-top: 1px solid #23235b !important;
+}
+/* Reduce extra white space in Leaflet layer control */
+.leaflet-control-layers {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    margin-top: 5px !important;
+    margin-bottom: 0 !important;
+}
+.leaflet-control-layers-list {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+/* Clickable map zoom links (purple, pointer, accent color) */
+#zoom-nust, #zoom-twente, #zoom-arnhem, #zoom-california, #zoom-riyadh, #zoom-melbourne {
+    color: #6a45ff;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+#zoom-nust:hover, #zoom-twente:hover, #zoom-arnhem:hover, #zoom-california:hover, #zoom-riyadh:hover, #zoom-melbourne:hover {
+    color: #7c5cff;
+    text-decoration: underline;
+}
+/* Custom Education Marker for Leaflet */
+.edu-marker {
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(106,69,255,0.18);
+    border: 2.5px solid #6a45ff;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35em;
+    color: #6a45ff;
+    transition: background 0.2s, color 0.2s;
+}
+.edu-marker i {
+    color: #6a45ff;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.theme-dark .edu-marker {
+    background: #23235b;
+    border-color: #b7aaff;
+    color: #b7aaff;
+}
+.theme-dark .edu-marker i {
+    color: #b7aaff;
+}
+/* Custom Work Marker for Leaflet (briefcase, purple, circular, matches edu-marker) */
+.work-marker {
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(106,69,255,0.18);
+    border: 2.5px solid #6a45ff;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35em;
+    color: #6a45ff;
+    transition: background 0.2s, color 0.2s;
+}
+.work-marker i {
+    color: #6a45ff;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.theme-dark .work-marker {
+    background: #23235b;
+    border-color: #b7aaff;
+    color: #b7aaff;
+}
+.theme-dark .work-marker i {
+    color: #b7aaff;
+}
 /* Flip card dark mode: front stays purple, back stays white, text always visible */
 .theme-dark .flip-card-front {
     background: #6a45ff !important;
@@ -1239,7 +1390,7 @@ section:nth-child(4) { animation-delay: 0.4s; }
 .theme-dark .beyond-work-pill i {
     color: #b7aaff;
 }
-}
+
 .beyond-work-header {
     display: flex;
     align-items: center;

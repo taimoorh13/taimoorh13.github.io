@@ -155,14 +155,118 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize Leaflet map for My Journey section
     if (document.getElementById('journey-map')) {
-        var map = L.map('journey-map', {
-            center: [20, 10], // Centered globally, adjust as needed
-            zoom: 2,
+        window.journeyMap = L.map('journey-map', {
+            center: [52.2, 5.3], // Centered on the Netherlands
+            zoom: 5,
             zoomControl: false,
             attributionControl: false
         });
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // Base layers
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
-        }).addTo(map);
+            attribution: '© OpenStreetMap contributors'
+        });
+        var cartoLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors, © CARTO'
+        });
+        var cartoDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors, © CARTO'
+        });
+    cartoLight.addTo(window.journeyMap);
+        // Add zoom control to top left
+        L.control.zoom({ position: 'topleft' }).addTo(window.journeyMap);
+
+        // Add fullscreen button below zoom controls
+        var FullscreenControl = L.Control.extend({
+            options: { position: 'topleft' },
+            onAdd: function(map) {
+                var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom map-ctrl-btn');
+                container.title = 'Full screen map';
+                container.style.marginTop = '2.5em';
+                container.style.width = '34px';
+                container.style.height = '34px';
+                container.style.display = 'flex';
+                container.style.alignItems = 'center';
+                container.style.justifyContent = 'center';
+                container.innerHTML = '<i class="fas fa-expand"></i>';
+                container.onclick = function(e) {
+                    e.stopPropagation();
+                    var mapContainer = map.getContainer();
+                    // Try Leaflet.fullscreen plugin if available
+                    if (map.toggleFullscreen) {
+                        map.toggleFullscreen();
+                    } else {
+                        // Fallback: toggle a fullscreen class
+                        if (!document.fullscreenElement) {
+                            mapContainer.requestFullscreen();
+                        } else {
+                            document.exitFullscreen();
+                        }
+                    }
+                };
+                return container;
+            }
+        });
+        window.journeyMap.addControl(new FullscreenControl());
+        // Add layer control to top right (OSM, Carto Light, Carto Dark)
+        var baseMaps = {
+            "Light": cartoLight,
+            "Dark": cartoDark,
+            "OpenStreetMap": osm
+        };
+        // Add education markers layer
+        var educationIcon = L.divIcon({
+            className: 'edu-marker',
+            html: '<i class="fas fa-graduation-cap"></i>',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+    window.islamabadMarker = L.marker([33.6844, 73.0479], { icon: educationIcon }).bindPopup("Islamabad, Pakistan<br>Bachelor's: NUST");
+    window.enschedeMarker = L.marker([52.2215, 6.8937], { icon: educationIcon }).bindPopup("Enschede, Netherlands<br>MSc: University of Twente");
+    var eduLayer = L.layerGroup([window.islamabadMarker, window.enschedeMarker]);
+    eduLayer.addTo(window.journeyMap);
+
+        // Add work markers layer
+        var workIcon = L.divIcon({
+            className: 'work-marker',
+            html: '<i class="fas fa-briefcase"></i>',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+        window.riyadhMarker = L.marker([24.7136, 46.6753], { icon: workIcon }).bindPopup("Riyadh, Saudi Arabia");
+        window.arnhemMarker = L.marker([51.9851, 5.8987], { icon: workIcon }).bindPopup("Arnhem, Netherlands");
+        window.melbourneMarker = L.marker([-37.8136, 144.9631], { icon: workIcon }).bindPopup("Melbourne, Australia");
+        window.californiaMarker = L.marker([36.7783, -119.4179], { icon: workIcon }).bindPopup("California, USA");
+        var blueAreaMarker = L.marker([33.7101, 73.0551], { icon: workIcon }).bindPopup("Blue Area, Islamabad");
+        var workLayer = L.layerGroup([
+            window.riyadhMarker, window.arnhemMarker, window.melbourneMarker, window.californiaMarker, blueAreaMarker
+        ]);
+    workLayer.addTo(window.journeyMap);
+
+        // Add both layers to the control
+    L.control.layers(baseMaps, { 'My Education': eduLayer, 'Work': workLayer }, { position: 'topright' }).addTo(window.journeyMap);
+        // Clickable text for all markers
+        var markerLinks = [
+            { id: 'zoom-nust', marker: window.islamabadMarker, latlng: [33.6844, 73.0479], zoom: 12 },
+            { id: 'zoom-twente', marker: window.enschedeMarker, latlng: [52.2215, 6.8937], zoom: 12 },
+            { id: 'zoom-arnhem', marker: window.arnhemMarker, latlng: [51.9851, 5.8987], zoom: 12 },
+            { id: 'zoom-california', marker: window.californiaMarker, latlng: [36.7783, -119.4179], zoom: 6 },
+            { id: 'zoom-riyadh', marker: window.riyadhMarker, latlng: [24.7136, 46.6753], zoom: 12 },
+            { id: 'zoom-melbourne', marker: window.melbourneMarker, latlng: [-37.8136, 144.9631], zoom: 12 }
+        ];
+        markerLinks.forEach(function(link) {
+            var el = document.getElementById(link.id);
+            if (el) {
+                el.style.cursor = 'pointer';
+                el.addEventListener('click', function() {
+                    window.journeyMap.setView(link.latlng, link.zoom, { animate: true });
+                    link.marker.openPopup();
+                });
+            }
+        });
     }
 });
